@@ -2,14 +2,59 @@ Source: bruce
 Section: unknown
 Priority: optional
 Maintainer: ChangZhuo Chen (陳昌倬) <czchen@gmail.com>
-Build-Depends: debhelper (>= 9)
-Standards-Version: 3.9.5
-Homepage: <insert the upstream URL, if relevant>
-#Vcs-Git: git://anonscm.debian.org/collab-maint/bruce.git
-#Vcs-Browser: http://anonscm.debian.org/?p=collab-maint/bruce.git;a=summary
+Build-Depends: debhelper (>= 9),
+               cmake,
+               libasan0,
+               libboost-all-dev,
+               libgtest-dev,
+               libsnappy-dev,
+               scons,
+Standards-Version: 3.9.6
+Homepage: https://github.com/tagged/bruce/
+Vcs-Git: git://anonscm.debian.org/collab-maint/bruce.git
+Vcs-Browser: http://anonscm.debian.org/cgit/collab-maint/bruce.git
 
 Package: bruce
 Architecture: any
-Depends: ${shlibs:Depends}, ${misc:Depends}
-Description: <insert up to 60 chars description>
- <insert long description, indented with spaces>
+Depends: ${misc:Depends},
+         ${shlibs:Depends},
+Description: Producer daemon for Apache Kafka
+ Bruce is a producer daemon for Apache Kafka. Bruce simplifies clients
+ that send messages to Kafka, freeing them from the complexity of direct
+ interaction with the Kafka cluster. Specifically, it handles the
+ details of:
+ .
+ - Routing messages to the proper brokers, and spreading the load evenly across
+   multiple partitions for a given topic
+ - Waiting for acknowledgements, and resending messages as necessary due to
+   communication failures or Kafka-reported errors Buffering messages to handle
+   transient load spikes and Kafka-related problems
+ - Tracking message discards when serious problems occur; Providing web-based
+   discard reporting and status monitoring interfaces Batching and compressing
+   messages in a configurable manner for improved performance
+ - Optional rate limiting of messages on a per-topic basis.
+
+Package: bruce-dbg
+Architecture: any
+Section: debug
+Priority: extra
+Depends: ${misc:Depends},
+         ${shlibs:Depends},
+         bruce (= ${binary:Version})
+Description: Producer daemon for Apache Kafka (debug symbols)
+ Bruce is a producer daemon for Apache Kafka. Bruce simplifies clients
+ that send messages to Kafka, freeing them from the complexity of direct
+ interaction with the Kafka cluster. Specifically, it handles the
+ details of:
+ .
+ - Routing messages to the proper brokers, and spreading the load evenly across
+   multiple partitions for a given topic
+ - Waiting for acknowledgements, and resending messages as necessary due to
+   communication failures or Kafka-reported errors Buffering messages to handle
+   transient load spikes and Kafka-related problems
+ - Tracking message discards when serious problems occur; Providing web-based
+   discard reporting and status monitoring interfaces Batching and compressing
+   messages in a configurable manner for improved performance
+ - Optional rate limiting of messages on a per-topic basis.
+ .
+ This package contains debug symbols.

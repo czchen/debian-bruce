@@ -1,0 +1,16 @@
+Description: Fix build environment
+--- a/SConstruct
++++ b/SConstruct
+@@ -169,6 +169,12 @@
+  'release': lambda: set_release_options()
+ }[mode]()
+ 
++if 'CXXFLAGS' in os.environ:
++    env.AppendUnique(CXXFLAGS=os.environ['CXXFLAGS'].split())
++
++if 'LDFLAGS' in os.environ:
++    env.AppendUnique(LINKFLAGS=os.environ['LDFLAGS'].split())
++
+ # Export variables.
+ Export(['env', 'src', 'out'])
+ 
