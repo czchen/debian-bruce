@@ -9,6 +9,9 @@ DEB_LDFLAGS_MAINT_APPEND=-L$(GTEST_BINARY_DIR)
 DPKG_EXPORT_BUILDFLAGS = 1
 include /usr/share/dpkg/default.mk
 
+BIN=$(CURDIR)/debian/tmp/usr/bin
+LIB=$(CURDIR)/debian/tmp/usr/lib/$(DEB_HOST_MULTIARCH)
+
 %:
 	dh $@
 
@@ -20,6 +23,13 @@ override_dh_auto_build:
 	make VERBOSE=1
 
 	./build_all --mode release --verbose
+
+override_dh_auto_install:
+	mkdir -p $(BIN)
+	cp $(CURDIR)/out/release/bruce/bruce $(BIN)
+
+	mkdir -p $(LIB)
+	cp $(CURDIR)/out/release/bruce/client/libbruce_client.so $(LIB)
 
 override_dh_clean:
 	rm -rf $(CURDIR)/out $(GTEST_BINARY_DIR)
