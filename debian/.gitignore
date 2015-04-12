@@ -1,4 +1,4 @@
-/*.debhelper.log
+/*.debhelper*
 /*.substvars
 /bruce/
 /bruce-dbg/
