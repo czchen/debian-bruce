@@ -1,0 +1,7 @@
+/*.debhelper.log
+/*.substvars
+/bruce/
+/bruce-dbg/
+/files
+/gtest
+/tmp/
