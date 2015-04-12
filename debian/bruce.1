@@ -65,117 +65,154 @@ Absolute pathname of local file where discards will be logged.  This
 is intended for debugging.  If unspecified, logging of discards to a
 file will be disabled.
 
-   --skip_compare_metadata_on_refresh
-     On metadata refresh, don't compare new metadata to old metadata.
-     Always replace the metadata even if it is unchanged.  This should be
-     disabled for normal operation, but enabling it may be useful for
-     testing.
+.TP
+\fB\-\-skip_compare_metadata_on_refresh\fR
+On metadata refresh, don't compare new metadata to old metadata.
+Always replace the metadata even if it is unchanged.  This should be
+disabled for normal operation, but enabling it may be useful for
+testing.
 
-   --msg_debug_byte_limit <MAX_BYTES>
-     Message debugging byte limit.
+.TP
+\fB\-\-msg_debug_byte_limit\fR \fIMAX_BYTES\fR
+Message debugging byte limit.
 
-   --msg_debug_time_limit <LIMIT_SECONDS>
-     Message debugging time limit in seconds.
+.TP
+\fB\-\-msg_debug_time_limit\fR \fILIMIT_SECONDS\fR
+Message debugging time limit in seconds.
 
-   --debug_dir <DIR>
-     Directory for debug instrumentation files.
+.TP
+\fB\-\-debug_dir\fR
+Directory for debug instrumentation files.
 
-   --no_log_discard
-     Do not write syslog messages when discards occur.  Discard information
-     will still be available through the web interface.
+.TP
+\fB\-\-no_log_discard\fR
+Do not write syslog messages when discards occur.  Discard information
+will still be available through the web interface.
 
-   --discard_report_interval <INTERVAL_SECONDS>
-     Discard reporting interval in seconds.
+.TP
+\fB\-\-discard_report_interval\fR \fIINTERVAL_SECONDS\fR
+Discard reporting interval in seconds.
 
-   --omit_timestamp
-     Omit timestamps from messages (applicable only when using legacy input
-     format).  Do not use this option, since it will soon be removed.  Its
-     purpose is to provide compatibility with legacy infrastructure at
-     if(we).
+.TP
+\fB\-\-omit_timestamp\fR
+Omit timestamps from messages (applicable only when using legacy input
+format).  Do not use this option, since it will soon be removed.  Its
+purpose is to provide compatibility with legacy infrastructure at
+if(we).
 
-   --min_pause_delay <MIN_DELAY_MS>
-     Minimum delay in milliseconds before fetching new metadata from Kafka
-     in response to an error.
+.TP
+\fB\-\-min_pause_delay\fR \fIMIN_DELAY_MS\fR
+Minimum delay in milliseconds before fetching new metadata from Kafka
+in response to an error.
 
-   --pause_rate_limit_max_double <MAX_DOUBLE>
-     Maximum number of times to double pause_rate_limit_initial on repeated
-     errors.
+.TP
+\fB\-\-pause_rate_limit_max_double\fR \fIMAX_DOUBLE\fR
+Maximum number of times to double pause_rate_limit_initial on repeated
+errors.
 
-   --pause_rate_limit_initial <DELAY_MS>
-     Initial delay value in milliseconds between consecutive metadata
-     fetches due to Kafka-related errors.  The actual value has some
-     randomness added.
+.TP
+\fB\-\-pause_rate_limit_initial\fR \fIDELAY_MS\fR
+Initial delay value in milliseconds between consecutive metadata
+fetches due to Kafka-related errors.  The actual value has some
+randomness added.
 
-   --kafka_socket_timeout <TIMEOUT_SECONDS>
-     Socket timeout in seconds to use when communicating with Kafka broker.
+.TP
+\fB\-\-kafka_socket_timeout\fR \fITIMEOUT_SECONDS\fR
+Socket timeout in seconds to use when communicating with Kafka broker.
 
-   --metadata_refresh_interval <INTERVAL_MINUTES>
-     Interval in minutes (plus or minus a bit of randomness) between
-     periodic metadata updates
+.TP
+\fB\-\-metadata_refresh_interval\fR \fIINTERVAL_MINUTES\fR
+Interval in minutes (plus or minus a bit of randomness) between
+periodic metadata updates
 
-   --dispatcher_restart_max_delay <MAX_DELAY_MS>
-     Max dispatcher shutdown delay in milliseconds when restarting
-     dispatcher for metadata update
+.TP
+\fB\-\-dispatcher_restart_max_delay\fR \fIMAX_DELAY_MS\fR
+Max dispatcher shutdown delay in milliseconds when restarting
+dispatcher for metadata update
 
-   --shutdown_max_delay <MAX_DELAY_MS>
-     Maximum delay in milliseconds for sending buffered messages once
-     shutdown signal is received.
+.TP
+\fB\-\-shutdown_max_delay\fR \fIMAX_DELAY_MS\fR
+Maximum delay in milliseconds for sending buffered messages once
+shutdown signal is received.
 
-   --replication_timeout <TIMEOUT>
-     Replication timeout value in millisceonds to send in produce requests.
+.TP
+\fB\-\-replication_timeout\fR \fITIMEOUT\fR
+Replication timeout value in millisceonds to send in produce requests.
 
-   --required_acks <REQUIRED_ACKS>
-     Required ACKs value to send in produce requests.
+.TP
+\fB\-\-required_acks\fR \fIREQUIRED_ACKS\fR
+Required ACKs value to send in produce requests.
 
-   --client_id <CLIENT_ID>
-     Client ID string to send in produce requests.
+.TP
+\fB\-\-client_id\fR \fICLIENT_ID\fR
+Client ID string to send in produce requests.
 
-   --daemon
-     Run as daemon.
+.TP
+\fB\-\-daemon\fR
+Run as daemon.
 
-   --max_failed_delivery_attempts <MAX_ATTEMPTS>
-     Maximum number of failed delivery attempts allowed before a message is
-     discarded.
+.TP
+\fB\-\-max_failed_delivery_attempts\fR \fIMAX_ATTEMPTS\fR
+Maximum number of failed delivery attempts allowed before a message is
+discarded.
 
-   --allow_large_unix_datagrams
-     Allow large enough values for max_input_msg_size that a client sending
-     a UNIX domain datagram of the maximum allowed size will need to
-     increase its SO_SNDBUF socket option above the default value.
+.TP
+\fB\-\-allow_large_unix_datagrams\fR
+Allow large enough values for max_input_msg_size that a client sending
+a UNIX domain datagram of the maximum allowed size will need to
+increase its SO_SNDBUF socket option above the default value.
 
-   --max_input_msg_size <MAX_BYTES>
-     Maximum input message size in bytes expected from clients.  Messages
-     larger than this value will be discarded.  Here, "size" means total
-     combined size of topic, key, and value.
+.TP
+\fB\-\-max_input_msg_size\fR \fIMAX_BYTES\fR
+Maximum input message size in bytes expected from clients.  Messages
+larger than this value will be discarded.  Here, "size" means total
+combined size of topic, key, and value.
 
-   --msg_buffer_max <MAX_KB>
-     (required)  Maximum amount of memory in Kb to use for buffering
-     messages.
+.TP
+\fB\-\-msg_buffer_max\fR \fIMAX_KB\fR
+(required)  Maximum amount of memory in Kb to use for buffering
+messages.
 
-   --status_port <PORT>
-     HTTP Status monitoring port.
+.TP
+\fB\-\-status_port\fR \fIPORT\fR
+HTTP Status monitoring port.
 
-   --protocol_version <VERSION>
-     Version of Kafka protocol to use.
+.TP
+\fB\-\-protocol_version\fR \fIVERSION\fR
+Version of Kafka protocol to use.
 
-   --receive_socket_name <PATH>
-     (required)  Pathname of UNIX domain socket for receiving messages from
-     web clients
+.TP
+\fB\-\-receive_socket_name\fR \fIPATH\fR
+(required)  Pathname of UNIX domain socket for receiving messages from
+web clients
 
-   --log_echo
-     Echo syslog messages to standard error.
+.TP
+\fB\-\-log_echo\fR
+Echo syslog messages to standard error.
 
-   --log_level <LOG_ERR|LOG_WARNING|LOG_NOTICE|LOG_INFO|LOG_DEBUG>
-     Log level.
 
-   --config_path <PATH>
-     (required)  Pathname of config file.
+.TP
+\fB\-\-log_level\fR \fI<LOG_ERR|LOG_WARNING|LOG_NOTICE|LOG_INFO|LOG_DEBUG>\fR
+Log level.
 
-   --,  --ignore_rest
-     Ignores the rest of the labeled arguments following this flag.
+.TP
+\fB\-\-config_path\fR \fIPATH\fR
+(required)  Pathname of config file.
 
-   --version
-     Displays version information and exits.
+.TP
+\fB\-\-\fR, \fB\-\-ignore_rest\fR
+Ignores the rest of the labeled arguments following this flag.
+
+.TP
+\fB\-\-version\fR
+Displays version information and exits.
 
 .TP
 \fB\-h\fR, \fB\-\-help\fR
 Displays usage information and exits.
+
+.SH "AUTHOR"
+This manual page was written by ChangZhuo Chen <czchen@gmail.com> for the
+.B
+Debian GNU/Linux
+system (but may be used by others).
