@@ -31,6 +31,9 @@ override_dh_auto_install:
 	mkdir -p $(LIB)
 	cp $(CURDIR)/out/release/bruce/client/libbruce_client.so $(LIB)
 
+override_dh_auto_test:
+	LD_LIBRARY_PATH=$(GTEST_BINARY_DIR_ ./build_all run_tests
+
 override_dh_clean:
 	rm -rf $(CURDIR)/out $(GTEST_BINARY_DIR)
 	dh_clean
