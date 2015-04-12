@@ -21,7 +21,7 @@ LOCKFILE=/var/lock/subsys/bruce
 STATUSPORT=9090
 
 . /lib/lsb/init-functions
-. /etc/defaults/bruce
+. /etc/default/bruce
 
 RETVAL=0
 
@@ -35,7 +35,7 @@ case "$1" in
       [ -f "$BRUCE" ] || exit 1
       mkdir -p /var/run/bruce
       chown nobody /var/run/bruce
-      chgrp nobody /var/run/bruce
+      chgrp nogroup /var/run/bruce
 
       daemon --user=nobody "$BRUCE" --daemon \
             --protocol_version "$PROTOCOL_VERSION" \
