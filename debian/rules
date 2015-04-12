@@ -31,6 +31,10 @@ override_dh_auto_install:
 	mkdir -p $(ETC)
 	cp $(CURDIR)/config/bruce_conf.xml $(ETC)
 
+override_dh_fixperms:
+	dh_fixperms
+	chmod -x $(CURDIR)/debian/bruce/etc/bruce/bruce_conf.xml
+
 override_dh_auto_test:
 	LD_LIBRARY_PATH=$(GTEST_BINARY_DIR) ./build_all run_tests
 
