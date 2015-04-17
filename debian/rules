@@ -13,7 +13,7 @@ BIN=$(CURDIR)/debian/tmp/usr/bin
 ETC=$(CURDIR)/debian/tmp/etc/bruce
 
 %:
-	dh $@
+	dh $@ --dbg-package=bruce-dbg
 
 override_dh_auto_build:
 	# Build gtest from source
